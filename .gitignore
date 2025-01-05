@@ -1,0 +1,71 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node Modules
+**/node_modules/
+
+# Dist Directory
+dist/
+!.env.example
+
+# Production Build Files
+*.env.local
+*.env.*.local
+
+# Editor Directories and Files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS Files
+.DS_Store
+
+# Linux Files
+*~
+
+# Windows Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Test Output
+coverage/
+*.lcov
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript
+*.tsbuildinfo
+
+# Yarn
+.pnp.*
+.pnp/
+
+# IDE Files
+*.iml
+*.idb
+.idea/
+*.sw?
+
+# Vitest
+.vitest/
+
+# Local Vue CLI service config
+.local/
+
+# Temporary Folders
+temp/
+tmp/
+
+# HMR and Cache
+*.cache/
