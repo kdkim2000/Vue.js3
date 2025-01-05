@@ -13,7 +13,6 @@
 import { useAuthStore } from './stores/authStore';
 
 const authStore = useAuthStore();
-
 const login = () => authStore.login();
 const logout = () => authStore.logout();
 </script>

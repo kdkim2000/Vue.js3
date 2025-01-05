@@ -1,16 +1,29 @@
 <template>
-    <v-container>
-      <v-btn color="error" @click="deleteUser">Delete User</v-btn>
-    </v-container>
-  </template>
-  
-  <script setup>
-  import api from '../utils/api';
-  
-  const userId = 1; // 삭제할 사용자 ID
-  
-  const deleteUser = async () => {
-    await api.delete(`/users/${userId}`);
-    alert('User deleted successfully');
-  };
-  </script>
+  <v-dialog v-model="showDialog" max-width="500px">
+    <v-card>
+      <v-card-title>Confirm Deletion</v-card-title>
+      <v-card-text>
+        Are you sure you want to delete this user?
+      </v-card-text>
+      <v-card-actions>
+        <v-btn text @click="cancel">Cancel</v-btn>
+        <v-btn text color="red" @click="confirm">Delete</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const showDialog = ref(false);
+
+const cancel = () => {
+  showDialog.value = false;
+};
+
+const confirm = async () => {
+  showDialog.value = false;
+  await deleteUser();
+};
+</script>

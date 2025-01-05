@@ -1,25 +1,40 @@
 <template>
-    <v-container>
-      <v-text-field v-model="user.name" label="Name"></v-text-field>
-      <v-text-field v-model="user.email" label="Email"></v-text-field>
-      <v-btn @click="updateUser">Update User</v-btn>
-    </v-container>
-  </template>
-  
-  <script setup>
-  import { ref, onMounted } from 'vue';
-  import api from '../utils/api';
-  
-  const user = ref({ name: '', email: '' });
-  const userId = 1; // 수정할 사용자 ID
-  
-  onMounted(async () => {
-    const response = await api.get(`/users/${userId}`);
-    user.value = response.data;
-  });
-  
-  const updateUser = async () => {
-    await api.put(`/users/${userId}`, user.value);
-    alert('User updated successfully');
-  };
-  </script>
+  <v-container>
+    <h1>Edit User</h1>
+    <v-form>
+      <v-text-field v-model="user.name" label="Name" required></v-text-field>
+      <v-text-field v-model="user.email" label="Email" required></v-text-field>
+      <v-btn color="primary" @click="updateUser">Save</v-btn>
+    </v-form>
+  </v-container>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useUserStore } from '../stores/userStore';
+import { useRoute, useRouter } from 'vue-router';
+
+const userStore = useUserStore();
+const route = useRoute();
+const router = useRouter();
+
+ const user = ref({ id: route.params.id, name: '', email: '' });
+
+onMounted(async () => {
+  // 비동기로 사용자 데이터 로드
+  await userStore.fetchUsers();
+
+  console.log("onMounted:userStore.users", userStore.users);
+  console.log("onMounted:route.params.id", route.params.id);
+  const foundUser = userStore.users.find((u) => u.id === route.params.id);
+  if (foundUser) {
+    user.value = { ...foundUser };
+  }
+  console.log("onMounted:foundUser", foundUser);
+});
+
+const updateUser = async () => {
+  await userStore.updateUser(user.value);
+  router.push('/users');
+};
+</script>

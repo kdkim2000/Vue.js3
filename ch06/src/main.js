@@ -1,12 +1,19 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
-import { createPinia } from 'pinia';
 import { createVuetify } from 'vuetify';
+import { createPinia } from 'pinia';
+import router from './router';
 import 'vuetify/styles';
-import '@mdi/font/css/materialdesignicons.css'; // 아이콘 스타일 추가
-
-const app = createApp(App);
+import '@mdi/font/css/materialdesignicons.css';
+const vuetify = createVuetify({
+    icons: {
+      defaultSet: 'mdi', // 기본 아이콘 세트를 'mdi'로 설정
+    },
+  });
 const pinia = createPinia();
-const vuetify = createVuetify();
-app.use(router).use(pinia).use(vuetify).mount('#app');
+
+createApp(App)
+  .use(vuetify)
+  .use(pinia)
+  .use(router)
+  .mount('#app');
