@@ -1,24 +1,15 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Casey Jones",
-      "email": "casey.jones@demo.com"
-    },
-    {
       "id": "2",
       "name": "John Wilson",
-      "email": "john.wilson@example.com"
+      "email": "john.wilson@example.com",
+      "role": "Editor"
     },
     {
       "id": "3",
       "name": "Morgan Williams",
       "email": "morgan.williams@example.com"
-    },
-    {
-      "id": "4",
-      "name": "Ryan Doe",
-      "email": "ryan.doe@example.com"
     },
     {
       "id": "5",
@@ -499,6 +490,12 @@
       "id": "100",
       "name": "John Miller",
       "email": "john.miller@example.com"
+    },
+    {
+      "id": "a354",
+      "name": "김경덕",
+      "email": "kdkim2000@samsung.com",
+      "role": "Admin"
     }
   ]
 }
