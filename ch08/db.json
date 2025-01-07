@@ -11,7 +11,7 @@
       "id": "2",
       "name": "Casey Smith",
       "email": "casey.smith@example.com",
-      "role": "Viewer",
+      "role": "Contributor",
       "active": false
     },
     {
@@ -19,7 +19,7 @@
       "name": "Robin Davis",
       "email": "robin.davis@example.com",
       "role": "Admin",
-      "active": true
+      "active": false
     },
     {
       "id": "4",
@@ -33,7 +33,7 @@
       "name": "Pat Taylor",
       "email": "pat.taylor@example.com",
       "role": "Admin",
-      "active": false
+      "active": true
     },
     {
       "id": "6",
