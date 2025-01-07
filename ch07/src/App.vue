@@ -4,6 +4,7 @@
       <v-btn text to="/users">User Management</v-btn>
       <v-btn text to="/userCards">UserCards</v-btn>
       <v-btn text to="/dashboard">Dashboard</v-btn>
+      <v-btn text to="/components">Components</v-btn>
     </v-app-bar>
     <v-main>
       <router-view />

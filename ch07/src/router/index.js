@@ -4,7 +4,7 @@ import EditUser from '../components/EditUser.vue';
 import AddUser from '../components/AddUser.vue';
 import UserCards from '../components/UserCards.vue';
 import Dashboard from '../components/Dashboard.vue';
-
+import Components from '../components/Components.vue';
 
 const routes = [
   { path: '/users', name: 'UserList', component: UserList },
@@ -12,6 +12,7 @@ const routes = [
   { path: '/users/edit/:id', name: 'EditUser', component: EditUser },
   { path: '/userCards', name: 'UserCards', component: UserCards },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/components', name: 'Components', component: Components },
 ];
 
 const router = createRouter({
