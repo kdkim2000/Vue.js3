@@ -15,6 +15,7 @@
       :headers="headers"
       class="elevation-1"
       density="compact"
+      fixed-header
     >
       <!-- Role column -->
       <template #item.role="{ item }">
