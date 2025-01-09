@@ -1,16 +1,5 @@
 <template>
   <v-app>
-    <!-- Navigation Drawer -->
-    <v-navigation-drawer v-model="menuVisible" app>
-      <v-list>
-        <v-list-item link @click="navigateTo('/')">
-          <v-list-item-title>Dashboard</v-list-item-title>
-        </v-list-item>
-        <v-list-item link @click="navigateTo('/users')">
-          <v-list-item-title>Users</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <!-- App Bar -->
     <v-app-bar color="primary" density="compact">
       <!-- Nav Icon to toggle the menu -->
@@ -56,6 +45,17 @@
       </template>
     </v-app-bar>
 
+    <!-- Navigation Drawer -->
+    <v-navigation-drawer v-model="menuVisible" app>
+      <v-list>
+        <v-list-item link @click="navigateTo('/')">
+          <v-list-item-title>Dashboard</v-list-item-title>
+        </v-list-item>
+        <v-list-item link @click="navigateTo('/users')">
+          <v-list-item-title>Users</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
       <router-view />
     </v-main>
