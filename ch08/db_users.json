@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Sophia Wilson",
-      "email": "sophia.wilson1@nate.com",
-      "role": "Contributor",
-      "active": true
-    },
-    {
       "id": "2",
       "name": "Olivia Anderson",
       "email": "olivia.anderson2@gmail.com",
@@ -970,6 +963,13 @@
       "id": "03af",
       "name": "김경덕",
       "email": "1@1.1",
+      "role": "Viewer",
+      "active": true
+    },
+    {
+      "id": "e04a",
+      "name": "sdfs",
+      "email": "sfsdfsd",
       "role": "Viewer",
       "active": true
     }

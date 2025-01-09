@@ -13,6 +13,7 @@ export const useAuthStore = defineStore("auth", {
       try {
         const response = await api.get(`/users?email=${email}`);
         const user = response.data[0]; // Assumes email is unique
+        console.log("user", user);
         // if (user && user.passwd === passwd) {
         if (user) {
           this.isAuthenticated = true;
