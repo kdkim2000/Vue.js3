@@ -57,6 +57,7 @@ const router = createRouter({
 // Navigation guard
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
+  authStore.restoreAuth(); // Restore authentication state
 
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     // Redirect to Login if not authenticated

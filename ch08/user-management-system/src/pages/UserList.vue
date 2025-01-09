@@ -1,29 +1,71 @@
 <template>
   <v-container>
     <h1>User List</h1>
-    <v-btn
-      icon
-      color="primary"
-      density="compact"
-      class="rounded-lg"
-      @click="navigateToAdd"
-    >
-      <v-icon size="small">mdi-plus</v-icon>
-    </v-btn>
+
+    <!-- Data Table -->
     <v-data-table
-      :items="users"
+      :items="filteredUsers"
       :headers="headers"
       class="elevation-1"
       density="compact"
       fixed-header
     >
+      <template v-slot:top>
+        <v-toolbar flat density="compact" class="me-0">
+          <v-toolbar-items variant="tonal">
+            <v-text-field
+              v-model="searchQuery"
+              label="Search by Name or Email"
+              prepend-inner-icon="mdi-magnify"
+              clearable
+              dense
+              density="compact"
+              class="me-3"
+              width="300"
+            ></v-text-field>
+            <v-select
+              v-model="selectedRole"
+              :items="roles"
+              label="Filter by Role"
+              prepend-inner-icon="mdi-filter"
+              clearable
+              dense
+              density="compact"
+              class="me-3"              
+              width="300"
+            ></v-select>
+            <v-switch
+              v-model="showActiveOnly"
+              label="Show Active Only"
+              inset
+              color="primary"
+              density="compact"
+              class="me-3"
+            ></v-switch>
+          </v-toolbar-items>
+
+          <v-spacer></v-spacer>
+          <v-btn
+            icon
+            color="primary"
+            density="compact"
+            class="rounded-lg ms-auto"
+            @click="navigateToAdd"
+          >
+            <v-icon size="small">mdi-plus</v-icon>
+          </v-btn>
+
+          <!-- Role Filter -->
+
+          <!-- Active Toggle -->
+        </v-toolbar>
+      </template>
       <!-- Role column -->
       <template #item.role="{ item }">
         <v-select
           v-model="item.role"
           :items="roles"
           @change="updateUser(item)"
-          color="primary"
           density="compact"
         ></v-select>
       </template>
@@ -60,14 +102,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useUserStore } from "../stores/userStore";
 import { useRouter } from "vue-router";
 
 const userStore = useUserStore();
 const router = useRouter();
+
 const roles = ["Admin", "Contributor", "Editor", "Viewer"];
-// Define table headers
 const headers = [
   { title: "ID", value: "id", key: "id" },
   { title: "Name", value: "name", key: "name" },
@@ -77,14 +119,28 @@ const headers = [
   { title: "Actions", value: "actions", sortable: false },
 ];
 
-// Fetch users when the component is mounted
+// Search and filter states
+const searchQuery = ref("");
+const selectedRole = ref(null);
+const showActiveOnly = ref(false);
+
 onMounted(() => {
-  console.log("UserList:onMounted");
   userStore.fetchUsers();
 });
 
-// Track the users in the store
-const users = computed(() => userStore.users);
+// Filtered users based on search and filter conditions
+const filteredUsers = computed(() => {
+  return userStore.users.filter((user) => {
+    const matchesSearch =
+      searchQuery.value === "" ||
+      user.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchQuery.value.toLowerCase());
+    const matchesRole = !selectedRole.value || user.role === selectedRole.value;
+    const matchesActive = !showActiveOnly.value || user.active === true;
+
+    return matchesSearch && matchesRole && matchesActive;
+  });
+});
 
 // Navigation methods
 const navigateToAdd = () => {
@@ -99,23 +155,26 @@ const deleteUser = async (id) => {
   await userStore.deleteUser(id);
 };
 
-// Toggle active state
 const updateUser = (item) => {
-  console.log(`updateUser: ${item.id}`);
   userStore.updateUser({ ...item, active: item.active });
 };
 </script>
+
 <style scoped>
+.v-app-bar {
+  display: flex;
+  gap: 12px;
+}
+
 .v-data-table tbody tr {
-  height: 34px; /* 각 행의 높이 */
+  height: 34px;
 }
-.v-data-table__actions {
-  height: 30px; /* 작업 열의 너비 */
-}
+
 .v-switch {
-  height: 38px; /* 스위치의 높이 */
+  height: 38px;
 }
+
 .v-select {
-  height: 38px; /* 스위치의 높이 */
+  height: 38px;
 }
 </style>

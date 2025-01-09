@@ -78,6 +78,7 @@ const error = ref(null);
 
 const router = useRouter();
 const authStore = useAuthStore();
+authStore.restoreAuth(); // Restore authentication state
 
 // Validation rules
 const rules = {

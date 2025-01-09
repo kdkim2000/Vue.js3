@@ -39,6 +39,7 @@ import { useAuthStore } from "../stores/authStore";
 
 const router = useRouter();
 const authStore = useAuthStore();
+authStore.restoreAuth(); // Restore authentication state
 
 const userAvatar = computed(() => authStore.user?.avatar || null);
 const userName = computed(() => authStore.user?.name || null);
