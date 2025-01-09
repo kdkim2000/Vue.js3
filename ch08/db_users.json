@@ -13,8 +13,7 @@
       "name": "Olivia Anderson",
       "email": "olivia.anderson2@gmail.com",
       "role": "Viewer",
-      "active": true,
-      "passwd": "ud4LrG~3o}"
+      "active": true
     },
     {
       "id": "3",
@@ -965,6 +964,13 @@
       "name": "김경덕",
       "email": "kdkim2000@gmail.com",
       "passwd": "zhsum63##",
+      "role": "Viewer",
+      "active": true
+    },
+    {
+      "id": "03af",
+      "name": "김경덕",
+      "email": "1@1.1",
       "role": "Viewer",
       "active": true
     }
