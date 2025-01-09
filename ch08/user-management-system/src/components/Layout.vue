@@ -25,28 +25,28 @@
               <span class="text-white text-h6">{{ userInitials }}</span>
             </template>
           </v-avatar>
+          <v-menu offset-y>
+            <template v-slot:activator="{ props }">
+              <v-btn v-bind="props" icon="mdi-dots-vertical"></v-btn>
+            </template>
+            <v-list>
+              <v-list-item link @click="handleOption('profile')">
+                <v-list-item-title>Profile</v-list-item-title>
+              </v-list-item>
+              <v-list-item link @click="handleOption('settings')">
+                <v-list-item-title>Settings</v-list-item-title>
+              </v-list-item>
+              <v-list-item link @click="handleOption('logout')">
+                <v-list-item-title>Logout</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </template>
-        <v-menu offset-y>
-          <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" icon="mdi-dots-vertical"></v-btn>
-          </template>
-          <v-list>
-            <v-list-item link @click="handleOption('profile')">
-              <v-list-item-title>Profile</v-list-item-title>
-            </v-list-item>
-            <v-list-item link @click="handleOption('settings')">
-              <v-list-item-title>Settings</v-list-item-title>
-            </v-list-item>
-            <v-list-item link @click="handleOption('logout')">
-              <v-list-item-title>Logout</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
       </template>
     </v-app-bar>
 
     <!-- Navigation Drawer -->
-    <v-navigation-drawer v-model="menuVisible" app>
+    <v-navigation-drawer color="primary" v-model="menuVisible" app>
       <v-list>
         <v-list-item link @click="navigateTo('/')">
           <v-list-item-title>Dashboard</v-list-item-title>
