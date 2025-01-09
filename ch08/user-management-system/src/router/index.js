@@ -2,13 +2,13 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
 
 // Components
-import Dashboard from "../components/Dashboard.vue";
-import UserList from "../components/UserList.vue";
-import UserDetail from "../components/UserDetail.vue";
-import AddUser from "../components/AddUser.vue";
-import EditUser from "../components/EditUser.vue";
-import Login from "../components/Login.vue"; // Login page component
-import Signup from "../components/Signup.vue"; // Signup page component
+import Dashboard from "../pages/Dashboard.vue";
+import UserList from "../pages/UserList.vue";
+import UserDetail from "../pages/UserDetail.vue";
+import AddUser from "../pages/AddUser.vue";
+import EditUser from "../pages/EditUser.vue";
+import Login from "../pages/Login.vue"; // Login page component
+import Signup from "../pages/Signup.vue"; // Signup page component
 
 // Route definitions
 const routes = [
