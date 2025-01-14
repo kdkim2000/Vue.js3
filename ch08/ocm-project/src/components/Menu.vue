@@ -43,6 +43,7 @@ watch(menuVisible, (newVal) => {
 // Router navigation
 const router = useRouter();
 const navigateTo = (path) => {
+  // menuVisible.value = false; // Close menu on navigation
   router.push(path);
 };
 </script>

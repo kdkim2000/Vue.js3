@@ -1,7 +1,75 @@
 <template>
-    <v-container>
-      <h1>Dashboard</h1>
-      <p>Welcome to the dashboard!</p>
-    </v-container>
-  </template>
-  
+  <v-container>
+    <!-- Toolbar -->
+    <v-toolbar flat density="compact">
+      <v-toolbar-title class="text-grey">
+        Project Dashboard
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+    </v-toolbar>
+
+    <!-- Cards -->
+    <v-row class="mt-2">
+      <!-- First Row -->
+      <v-col cols="8">
+        <OverseasProduction />
+      </v-col>
+      <v-col cols="4">
+        <DispatchStatus />
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <!-- Second Row -->
+      <v-col cols="3">
+        <ProjectProgress />
+      </v-col>
+      <v-col cols="3">
+        <BlueprintStatus />
+      </v-col>
+      <v-col cols="3">
+        <MaterialArrivalRate />
+      </v-col>
+      <v-col cols="3">
+        <ProductionProgress />
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <!-- Third Row -->
+      <v-col cols="3">
+        <InspectionStatus />
+      </v-col>
+      <v-col cols="3">
+        <PunchClosureStatus />
+      </v-col>
+      <v-col cols="3">
+        <WeldingDefectRate />
+      </v-col>
+      <v-col cols="3">
+        <WorkforceStatus />
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script setup>
+import OverseasProduction from "@/components/cards/OverseasProduction.vue";
+import DispatchStatus from "@/components/cards/DispatchStatus.vue";
+import ProjectProgress from "@/components/cards/ProjectProgress.vue";
+import BlueprintStatus from "@/components/cards/BlueprintStatus.vue";
+import MaterialArrivalRate from "@/components/cards/MaterialArrivalRate.vue";
+import ProductionProgress from "@/components/cards/ProductionProgress.vue";
+import InspectionStatus from "@/components/cards/InspectionStatus.vue";
+import PunchClosureStatus from "@/components/cards/PunchClosureStatus.vue";
+import WeldingDefectRate from "@/components/cards/WeldingDefectRate.vue";
+import WorkforceStatus from "@/components/cards/WorkforceStatus.vue";
+</script>

@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "chart.js": "^4.4.7",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "vite-plugin-vuetify": "^2.0.4",
     "vue": "^3.5.13",
     "vue-route": "^1.1.5",
