@@ -1,12 +1,12 @@
 <template>
   <v-app>
     <!-- App Bar -->
-    <v-app-bar app>
+    <v-app-bar app color="primary">
       <v-app-bar-title>My Vuetify App</v-app-bar-title>
     </v-app-bar>
 
     <!-- Navigation Drawer -->
-    <v-navigation-drawer app>
+    <v-navigation-drawer app color="primary">
       <v-list>
         <v-list-item link>
           <v-list-item-title>Home</v-list-item-title>
@@ -36,5 +36,4 @@
 <script setup>
 </script>
 
-<style>
-</style>
+<style></style>
