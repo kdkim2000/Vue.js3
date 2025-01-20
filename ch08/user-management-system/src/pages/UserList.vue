@@ -3,55 +3,20 @@
     <h1>User List</h1>
 
     <!-- Data Table -->
-    <v-data-table
-      :items="filteredUsers"
-      :headers="headers"
-      class="elevation-1"
-      density="compact"
-      fixed-header
-    >
+    <v-data-table :items="filteredUsers" :headers="headers" class="elevation-1" density="compact" fixed-header>
       <template v-slot:top>
         <v-toolbar flat density="compact" class="me-0">
           <v-toolbar-items variant="tonal">
-            <v-text-field
-              v-model="searchQuery"
-              label="Search by Name or Email"
-              prepend-inner-icon="mdi-magnify"
-              clearable
-              dense
-              density="compact"
-              class="me-3"
-              width="300"
-            ></v-text-field>
-            <v-select
-              v-model="selectedRole"
-              :items="roles"
-              label="Filter by Role"
-              prepend-inner-icon="mdi-filter"
-              clearable
-              dense
-              density="compact"
-              class="me-3"              
-              width="300"
-            ></v-select>
-            <v-switch
-              v-model="showActiveOnly"
-              label="Show Active Only"
-              inset
-              color="primary"
-              density="compact"
-              class="me-3"
-            ></v-switch>
+            <v-text-field v-model="searchQuery" label="Search by Name or Email" prepend-inner-icon="mdi-magnify"
+              clearable dense density="compact" class="me-3" width="300"></v-text-field>
+            <v-select v-model="selectedRole" :items="roles" label="Filter by Role" prepend-inner-icon="mdi-filter"
+              clearable dense density="compact" class="me-3" width="300"></v-select>
+            <v-switch v-model="showActiveOnly" label="Show Active Only" inset color="primary" density="compact"
+              class="me-3"></v-switch>
           </v-toolbar-items>
 
           <v-spacer></v-spacer>
-          <v-btn
-            icon
-            color="primary"
-            density="compact"
-            class="rounded-lg ms-auto"
-            @click="navigateToAdd"
-          >
+          <v-btn icon color="primary" density="compact" class="rounded-lg ms-auto" @click="navigateToAdd">
             <v-icon size="small">mdi-plus</v-icon>
           </v-btn>
 
@@ -62,38 +27,18 @@
       </template>
       <!-- Role column -->
       <template #item.role="{ item }">
-        <v-select
-          v-model="item.role"
-          :items="roles"
-          @change="updateUser(item)"
-          density="compact"
-        ></v-select>
+        <v-select v-model="item.role" :items="roles" @change="updateUser(item)" density="compact"></v-select>
       </template>
       <!-- Active column -->
       <template #item.active="{ item }">
-        <v-switch
-          v-model="item.active"
-          @change="updateUser(item)"
-          color="primary"
-          density="compact"
-        ></v-switch>
+        <v-switch v-model="item.active" @change="updateUser(item)" color="primary" density="compact"></v-switch>
       </template>
       <!-- Actions column -->
       <template #item.actions="{ item }">
-        <v-btn
-          icon
-          elevation="0"
-          density="comfortable"
-          @click="navigateToEdit(item.id)"
-        >
+        <v-btn icon elevation="0" density="comfortable" @click="navigateToEdit(item.id)">
           <v-icon>mdi-pencil</v-icon>
         </v-btn>
-        <v-btn
-          icon
-          elevation="0"
-          density="comfortable"
-          @click="deleteUser(item.id)"
-        >
+        <v-btn icon elevation="0" density="comfortable" @click="deleteUser(item.id)">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </template>

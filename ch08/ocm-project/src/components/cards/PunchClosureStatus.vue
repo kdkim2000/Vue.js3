@@ -1,12 +1,15 @@
 <template>
-  <v-card hight="300px">
+  <v-card class="dynamic-height">
     <v-card-title class="headline">
       <v-icon color="primary" class="me-2">mdi-checkbox-marked-circle</v-icon>
       Punch 종결현황
+      <v-icon color="green" class="me-2">mdi-circle</v-icon>
     </v-card-title>
-    <v-card-text>
-      <canvas id="punchClsureStatus" style="width: 100%; height: 100%;"></canvas>
-    </v-card-text>
+    <v-row>
+      <v-col class="me-4" align="end">
+        <canvas id="punchClsureStatus" style="width: 100%; height: 100%;"></canvas>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
@@ -47,16 +50,16 @@ const createComboChart = () => {
           data: salesData.map((data) => data.sales),
           backgroundColor: "rgba(75, 192, 192, 0.6)", // Teal
           borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1,
+          borderWidth: 0.1,
         },
         {
           type: "line",
           label: "Sales Target",
           data: salesData.map((data) => data.target),
           borderColor: "rgba(255, 99, 132, 1)", // Red
-          borderWidth: 2,
+          borderWidth: 1,
           fill: false,
-          tension: 0.4,
+          tension: 0.1,
         },
       ],
     },
@@ -69,13 +72,11 @@ const createComboChart = () => {
         x: {
           title: {
             display: false,
-            text: "Month",
           },
         },
         y: {
           title: {
             display: false,
-            text: "Amount (in USD)",
           },
           beginAtZero: false,
         },
@@ -93,5 +94,10 @@ onMounted(() => {
 h1 {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.dynamic-height {
+  min-height: 250px;
+  height: auto;
 }
 </style>

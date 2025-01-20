@@ -1,13 +1,13 @@
 <template>
-  <v-card class="elevation-2">
+  <v-card class="dynamic-height">
     <v-card-title class="headline">
       <v-icon color="primary" class="me-2">mdi-progress-clock</v-icon>
       프로젝트 공정률
       <v-icon color="green" class="me-2">mdi-circle</v-icon>
     </v-card-title>
     <v-row>
-      <v-col class="me-4" align="end">
-        <v-icon color="blue" class="me-2">mdi-circle</v-icon>
+      <v-col class="me-4">
+        <v-icon color="#1A237E" class="me-2">mdi-circle</v-icon>
         <span>누계계획</span>
         <v-icon color="#B71C1C" class="me-2">mdi-circle</v-icon>
         <span class="">누계실적</span>
@@ -22,12 +22,6 @@
         <div class="chart-cumulativeActual-text">
           {{ cumulativeActual.toFixed(2) }}%
         </div>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-card-text>
-        </v-card-text>
       </v-col>
     </v-row>
   </v-card>
@@ -49,12 +43,20 @@ Chart.register(ArcElement, DoughnutController, Tooltip, ChartDataLabels);
 const gaugeData = {
   datasets: [
     {
-      data: [cumulativeActual, cumulativePlan - cumulativeActual, 100 - cumulativeActual],
-      backgroundColor: ["#B71C1C", "#1A237E", "#EFEFEF"], // 누계실적, 누계계획, 나머지
+      data: [cumulativeActual, 100 - cumulativeActual],
+      backgroundColor: ["#B71C1C", "#EFEFEF"], // 누계실적, 누계계획, 나머지
       borderWidth: 0,
       circumference: 180, // Semi-circle
       rotation: -90, // Start at the bottom
-      cutout: "50%", // Inner radius for the donut
+      cutout: "20%", // Inner radius for the donut
+    },
+    {
+      data: [cumulativePlan, 100 - cumulativePlan],
+      backgroundColor: ["#1A237E", "#EFEFEF"], // 누계실적, 누계계획, 나머지
+      borderWidth: 0,
+      circumference: 180, // Semi-circle
+      rotation: -90, // Start at the bottom
+      cutout: "55%", // Inner radius for the donut
     },
   ],
 };
@@ -101,7 +103,7 @@ onMounted(() => {
 }
 
 .chart-cumulativeActual-text {
-  top: 80%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
@@ -111,7 +113,7 @@ onMounted(() => {
 }
 
 .chart-cumulativePlan-text {
-  top: 70%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;

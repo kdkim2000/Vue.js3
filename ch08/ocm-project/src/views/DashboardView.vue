@@ -17,44 +17,44 @@
     </v-toolbar>
 
     <!-- Cards -->
-    <v-row class="mt-2">
+    <v-row class="mt-1">
       <!-- First Row -->
-      <v-col cols="8">
+      <v-col cols="12" sm="12" md="8" lg="8" xl="8" xxl="8">
         <OverseasProduction />
       </v-col>
-      <v-col cols="4">
+      <v-col cols="12" sm="12" md="4" lg="4" xl="4" xxl="4">
         <DispatchStatus />
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row class="mt-1">
       <!-- Second Row -->
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <ProjectProgress />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <BlueprintStatus />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <MaterialArrivalRate />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <ProductionProgress />
       </v-col>
     </v-row>
 
     <v-row>
       <!-- Third Row -->
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <InspectionStatus />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <PunchClosureStatus />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <WeldingDefectRate />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" sm="6" md="3" lg="3" xl="3" xxl="3">
         <WorkforceStatus />
       </v-col>
     </v-row>

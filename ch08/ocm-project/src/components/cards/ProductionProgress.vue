@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="dynamic-height">
     <v-card-title class="headline">
       <v-icon color="primary" class="me-2">mdi-cogs</v-icon>
       생산공정률
@@ -8,12 +8,6 @@
     <v-row>
       <v-col>
         <canvas id="productionProgressChart" style="width: 100%; height: 100%;"></canvas>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-card-text>
-        </v-card-text>
       </v-col>
     </v-row>
   </v-card>
@@ -88,5 +82,10 @@ onMounted(() => {
 h1 {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.dynamic-height {
+  min-height: 250px;
+  height: auto;
 }
 </style>
