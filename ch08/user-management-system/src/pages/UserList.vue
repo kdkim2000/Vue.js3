@@ -26,6 +26,14 @@
         </v-toolbar>
       </template>
       <!-- Role column -->
+      <template #item.avatar="{ item }">
+        <v-avatar v-if="item.avatar" size="32">
+          <v-img :src="item.avatar" alt="Avatar"></v-img>
+        </v-avatar>
+        <v-avatar v-else size="32" color="red">
+          <span class="text-white text-h6">{{ item.name.charAt(0).toUpperCase() }}</span>
+        </v-avatar>
+      </template>
       <template #item.role="{ item }">
         <v-select v-model="item.role" :items="roles" @change="updateUser(item)" density="compact"></v-select>
       </template>
@@ -57,6 +65,7 @@ const router = useRouter();
 const roles = ["Admin", "Contributor", "Editor", "Viewer"];
 const headers = [
   { title: "ID", value: "id", key: "id" },
+  { title: "avatar", value: "avatar", key: "avatar" },
   { title: "Name", value: "name", key: "name" },
   { title: "Email", value: "email", key: "email" },
   { title: "Role", value: "role", key: "role" },
