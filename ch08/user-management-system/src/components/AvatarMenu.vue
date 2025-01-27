@@ -3,14 +3,9 @@
     <span class="me-3">{{ userName }}</span>
     <v-menu offset-y>
       <template v-slot:activator="{ props }">
-        <v-avatar
-          v-bind="props"
-          size="40"
-          color="secondary"
-          class="me-4 cursor-pointer"
-        >
+        <v-avatar v-bind="props" size="40" color="secondary" class="me-4 cursor-pointer">
           <template v-if="userAvatar">
-            <img :src="userAvatar" alt="User Avatar" />
+            <img :src="userAvatar" alt="User Avatar" class="avatar-img" />
           </template>
           <template v-else>
             <span class="text-white text-h6">{{ userInitials }}</span>
@@ -39,7 +34,7 @@ import { useAuthStore } from "../stores/authStore";
 
 const router = useRouter();
 const authStore = useAuthStore();
-authStore.restoreAuth(); // Restore authentication state
+authStore.restoreAuth();
 
 const userAvatar = computed(() => authStore.user?.avatar || null);
 const userName = computed(() => authStore.user?.name || null);
@@ -49,10 +44,12 @@ const userInitials = computed(() => {
 });
 
 const handleOption = (option) => {
-  console.log(`Selected option: ${option}`);
+
   if (option === "logout") {
     authStore.logout();
     router.push("/login");
+  } else {
+    router.push("/" + option);
   }
 };
 </script>
@@ -60,5 +57,13 @@ const handleOption = (option) => {
 <style scoped>
 .cursor-pointer {
   cursor: pointer;
+}
+
+/* 아바타 이미지 크기 조절 */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 </style>

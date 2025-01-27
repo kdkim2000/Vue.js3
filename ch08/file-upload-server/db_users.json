@@ -390,7 +390,7 @@
       "email": "ava.moore@hotmail.com",
       "role": "Contributor",
       "active": false,
-      "avatar": "http://localhost:3002/files/1737957197866-928547168-img.png"
+      "avatar": "https://randomuser.me/api/portraits/men/18.jpg"
     },
     {
       "id": "50",
@@ -802,11 +802,10 @@
     },
     {
       "id": "fd58",
-      "name": "김경덕-1",
+      "name": "김경덕",
       "email": "kdkim2000@gmail.com",
       "role": "Admin",
-      "active": true,
-      "avatar": "http://localhost:3002/files/수현-1737961721196-578750012.png"
+      "active": true
     }
   ]
 }

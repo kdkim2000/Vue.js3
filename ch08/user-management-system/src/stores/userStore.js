@@ -17,8 +17,10 @@ export const useUserStore = defineStore('user', {
       this.users.push(response.data);
     },
     async updateUser(user) {
+      console.log("userStore.updateUser",user);
       await api.put(`/users/${user.id}`, user);
       const index = this.users.findIndex((u) => u.id === user.id);
+      console.log("userStore.index",index);
       if (index !== -1) this.users[index] = user;
     },
     async deleteUser(id) {

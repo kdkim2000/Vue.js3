@@ -7,8 +7,10 @@ import UserList from "../pages/UserList.vue";
 import UserDetail from "../pages/UserDetail.vue";
 import AddUser from "../pages/AddUser.vue";
 import EditUser from "../pages/EditUser.vue";
-import Login from "../pages/Login.vue"; // Login page component
-import Signup from "../pages/Signup.vue"; // Signup page component
+import Login from "../pages/Login.vue"; 
+import Signup from "../pages/Signup.vue"; 
+import Setting from "../pages/Setting.vue"; 
+import Profile from "../pages/Profile.vue"; 
 
 // Route definitions
 const routes = [
@@ -44,6 +46,18 @@ const routes = [
     name: "EditUser",
     component: EditUser,
     props: true,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/settings',
+    name: "Setting",
+    component: Setting,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/profile',
+    name: "profile",
+    component: Profile,
     meta: { requiresAuth: true },
   },
 ];

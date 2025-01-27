@@ -85,6 +85,7 @@ const uploadAvatar = async (file) => {
       // 서버에서 반환한 URL을 user.avatar에 저장
       user.value.avatar = response.data.url;
       console.log("Uploaded Avatar URL:", user.value.avatar);
+      console.log("user.value:", user.value);
     } catch (error) {
       console.error("Avatar upload failed:", error);
     } finally {
@@ -98,6 +99,7 @@ const uploadAvatar = async (file) => {
 // 사용자 정보 업데이트 (이미지 URL만 저장)
 const updateUser = async () => {
   const updatedUser = {
+    id: user.value.id,
     name: user.value.name,
     email: user.value.email,
     role: user.value.role,
@@ -105,7 +107,10 @@ const updateUser = async () => {
     avatar: user.value.avatar, // 서버 업로드 URL만 저장
   };
 
-  await userStore.updateUser(route.params.id, updatedUser);
+  console.log("Updated user.value:", user.value);
+  console.log("Updated User:", updatedUser);
+
+  await userStore.updateUser(updatedUser);
   router.push("/users");
 };
 
