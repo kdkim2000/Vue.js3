@@ -88,7 +88,7 @@
 
     <!-- Chart Section -->
     <v-row class="mt-8">
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="4">
         <v-card>
           <v-card-title>User Status Chart</v-card-title>
           <v-card-text>
@@ -96,7 +96,7 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="8">
         <v-card>
           <v-card-title>User Role Distribution</v-card-title>
           <v-card-text>
@@ -140,10 +140,10 @@ const sortedRoles = computed(() => {
 
 // Role colors and icons
 const roleColors = {
-  Admin: { class: "bg-light-blue", iconColor: "blue", icon: "mdi-shield-check" },
-  Editor: { class: "bg-light-purple", iconColor: "purple", icon: "mdi-pencil" },
-  Contributor: { class: "bg-light-orange", iconColor: "orange", icon: "mdi-account-edit" },
-  Viewer: { class: "bg-light-green", iconColor: "green", icon: "mdi-eye" },
+  Admin: { class: "bg-blue-lighten-4", iconColor: "#42A5F5", icon: "mdi-shield-check" },
+  Editor: { class: "bg-purple-lighten-4", iconColor: "#AB47BC", icon: "mdi-pencil" },
+  Contributor: { class: "bg-orange-lighten-4", iconColor: "#FFA726", icon: "mdi-account-edit" },
+  Viewer: { class: "bg-green-lighten-4", iconColor: "#66BB6A", icon: "mdi-eye" },
 };
 
 // Role descriptions
@@ -176,7 +176,6 @@ onMounted(async () => {
   }
 });
 
-// User status chart (doughnut)
 const createUserStatusChart = () => {
   const ctx = document.getElementById("userStatusChart")?.getContext("2d");
   if (!ctx) return;
@@ -189,12 +188,41 @@ const createUserStatusChart = () => {
         {
           label: "User Status",
           data: [stats.value.active, stats.value.inactive],
-          backgroundColor: ["#4CAF50", "#F44336"], // Green and Red
+          backgroundColor: ["#66BB6A", "#FF7043"], // Vuetify Green 500, Deep Orange 400
+          borderColor: ["#43A047", "#E64A19"], // Slightly darker tones
+          borderWidth: 2,
+          hoverOffset: 10,
         },
       ],
     },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: {
+            font: {
+              size: 14,
+              family: "'Roboto', sans-serif",
+            },
+            color: "#37474F",
+          },
+        },
+        tooltip: {
+          enabled: true,
+          backgroundColor: "#ECEFF1",
+          titleColor: "#37474F",
+          bodyColor: "#37474F",
+        },
+      },
+      animation: {
+        duration: 1200,
+        easing: "easeInOutCubic",
+      },
+    },
   });
 };
+
 
 // User role chart (bar)
 const createUserRoleChart = () => {
@@ -214,22 +242,42 @@ const createUserRoleChart = () => {
           label: "User Roles",
           data: orderedCounts,
           backgroundColor: orderedRoles.map((role) => roleColors[role]?.iconColor),
+          borderWidth: 1,
         },
       ],
     },
     options: {
       responsive: true,
       plugins: {
-        legend: {
-          position: "top",
+        legend: { 
+          display: false, 
+        },
+        tooltip: {
+          enabled: true,
+          backgroundColor: "#ECEFF1",
+          titleColor: "#37474F",
+          bodyColor: "#37474F",
         },
       },
       scales: {
         y: {
           beginAtZero: true,
+          ticks: {
+            color: "#37474F",
+          },
         },
+        x: {
+          ticks: {
+            color: "#37474F",
+          },
+        },
+      },
+      animation: {
+        duration: 1200,
+        easing: "easeInOutCubic",
       },
     },
   });
 };
+
 </script>

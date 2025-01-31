@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer app>
+    <v-navigation-drawer app color="primary">
       <v-list>
         <v-list-item link>
           <v-list-item-title>Home</v-list-item-title>
